@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typeahead</title>
-  <link rel="stylesheet" href="index.css">
-  
-</head>
-<body>
-  <div id="custom-templates">
-    <input class="typeahead" dir="auto" type="text" placeholder="suburb/town" value="">
-  </div>
-  <p class="choosen_id"></p>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Typeahead</title>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<div id="custom-templates">
+			<input
+				class="typeahead"
+				dir="auto"
+				type="text"
+				placeholder="suburb/town"
+				value=""
+			/>
+		</div>
 
-  <script src='./js/jquery-1.10.2.min.js'></script>
-  <script src="./js/handlebars.js"></script>
-  <script src="./js/typeahead.bundle.js"></script>
-  <script src='js/script.js'></script>
-</body>
+		<p class="choosen_id" style="position: relative; top: 100px"></p>
+
+		<script src="./js/jquery-1.10.2.min.js"></script>
+		<script src="./js/handlebars.js"></script>
+		<script src="./js/typeahead.bundle.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>
