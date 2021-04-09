@@ -36,7 +36,7 @@ const HOST = 'http://localhost:3000';
 			templates: {
 				empty: [
 					'<div class="empty-message">',
-					'unable to find any Best Picture winners that match the current query',
+					'unable to find any towns oe suburbs that match the current query',
 					'</div>',
 				].join('\n'),
 				suggestion: Handlebars.compile(
@@ -47,10 +47,15 @@ const HOST = 'http://localhost:3000';
 	);
 
 	let choosen_adress;
+	let mySuggestion = null;
+	let isSelect = false;
 	$('.typeahead').bind('typeahead:select', function (ev, suggestion) {
 		console.log(suggestion.locality_id);
 		$('.choosen_id').html(`<h1>CHOOSED ID: ${suggestion.locality_id}</h1>`);
 		choosen_adress = suggestion;
 		console.dir(suggestion);
+	});
+	$('.typeahead').bind('typeahead:change', function (ev, suggestion) {
+		if (!suggestion) $('.choosen_id').html('')
 	});
 })();

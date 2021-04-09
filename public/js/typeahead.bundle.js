@@ -2028,6 +2028,15 @@
                 this._minLengthMet() && this.menu.update(this.input.getQuery());
             },
             _onBlurred: function onBlurred() {
+                let $selectable = this.menu.getTopSelectable();
+                let data = this.menu.getSelectableData($selectable);
+
+                if (data && !this.eventBus.before("select", data.obj)) {
+                    this.input.setQuery(data.val, true);
+                    this.eventBus.trigger("select", data.obj);
+                } else {
+                    this.input.setQuery('', true);
+                }
                 if (this.input.hasQueryChangedSinceLastFocus()) {
                     this.eventBus.trigger("change", this.input.getQuery());
                 }
