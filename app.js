@@ -20,13 +20,13 @@ app.get('/prefetch', async (req, res) => {
 });
 
 app.get('/:query', async (req, res) => {
-	const query = req.params.query;
+	const query = req.params.query.toLowerCase();
 
 	res.json(
 		localityData.filter((item) => {
 			return (
-				item.suburb_name.search(query) !== -1 ||
-				item.town_name.search(query) !== -1
+				item.suburb_name.toLowerCase().search(query) !== -1 ||
+				item.town_name.toLowerCase().search(query) !== -1
 			);
 		})
 	);
