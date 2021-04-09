@@ -9,7 +9,7 @@ const localityData = require('./storage/locality.json');
 
 app.use(cors());
 
-app.use(express.static(path.join('./public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 app.listen(PORT, 'localhost', () => {
 	console.log(`Server is started on port ${PORT}`);
@@ -33,5 +33,5 @@ app.get('/:query', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join('./public/index.html'));
+	res.sendFile(path.join(__dirname, './public/index.html'));
 });
