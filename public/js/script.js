@@ -55,7 +55,21 @@ const HOST = 'http://localhost:3000';
 		choosen_adress = suggestion;
 		console.dir(suggestion);
 	});
-	$('.typeahead').bind('typeahead:change', function (ev, suggestion) {
-		if (!suggestion) $('.choosen_id').html('')
+	$('.typeahead').bind('typeahead:render', function (ev, suggestion) {
+		mySuggestion = suggestion;
+	});
+	$('.typeahead').bind('typeahead:select', function () {
+		isSelect = true;
+	});
+	$('.typeahead').bind('typeahead:close', function () {
+		if (!isSelect && mySuggestion) {
+				$('.typeahead').val(`${mySuggestion.locality_name}, ${mySuggestion.postal_code}`);
+				$('.choosen_id').html(`<h1>CHOOSED ID: ${mySuggestion.locality_id}</h1>`);
+				choosen_adress = mySuggestion;
+		} else if (!isSelect && !mySuggestion) {
+				$('.typeahead').val('');
+				$('.choosen_id').html('<p></p>');
+		}
+		isSelect = false;
 	});
 })();
