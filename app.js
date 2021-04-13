@@ -24,10 +24,7 @@ app.get('/:query', async (req, res) => {
 
 	res.json(
 		localityData.filter((item) => {
-			return (
-				item.suburb_name.toLowerCase().search(query) !== -1 ||
-				item.town_name.toLowerCase().search(query) !== -1
-			);
+			return item.locality_name.toLowerCase().search(query) !== -1;
 		})
 	);
 });

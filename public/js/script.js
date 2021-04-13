@@ -30,7 +30,9 @@ const HOST = 'http://localhost:3000';
 		{
 			name: 'pictures',
 			display: function (suggestion) {
-				return [suggestion.locality_name, suggestion.postal_code].join(',');
+				return [suggestion.locality_long_name, suggestion.postal_code].join(
+					','
+				);
 			},
 			source: bestPictures,
 			templates: {
@@ -63,12 +65,14 @@ const HOST = 'http://localhost:3000';
 	});
 	$('.typeahead').bind('typeahead:close', function () {
 		if (!isSelect && mySuggestion) {
-				$('.typeahead').val(`${mySuggestion.locality_name}, ${mySuggestion.postal_code}`);
-				$('.choosen_id').html(`<h1>CHOOSED ID: ${mySuggestion.locality_id}</h1>`);
-				choosen_adress = mySuggestion;
+			$('.typeahead').val(
+				`${mySuggestion.locality_name}, ${mySuggestion.postal_code}`
+			);
+			$('.choosen_id').html(`<h1>CHOOSED ID: ${mySuggestion.locality_id}</h1>`);
+			choosen_adress = mySuggestion;
 		} else if (!isSelect && !mySuggestion) {
-				$('.typeahead').val('');
-				$('.choosen_id').html('<p></p>');
+			$('.typeahead').val('');
+			$('.choosen_id').html('<p></p>');
 		}
 		isSelect = false;
 	});
