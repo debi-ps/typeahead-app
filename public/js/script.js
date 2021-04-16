@@ -29,6 +29,7 @@ const HOST = 'http://localhost:3000';
 		},
 		{
 			name: 'pictures',
+			limit: 10,
 			display: function (suggestion) {
 				return [suggestion.locality_long_name, suggestion.postal_code].join(
 					','
@@ -42,7 +43,7 @@ const HOST = 'http://localhost:3000';
 					'</div>',
 				].join('\n'),
 				suggestion: Handlebars.compile(
-					'<div>{{locality_name}}, {{suburb_name}}</div>'
+					'<div>{{locality_long_name}}, {{suburb_name}}</div>'
 				),
 			},
 		}
